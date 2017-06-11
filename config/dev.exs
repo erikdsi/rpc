@@ -1,21 +1,18 @@
 use Mix.Config
 
-config :ex_aws,
-  access_key_id: [System.get_env("AWS_ACCESS_KEY_ID"), :instance_role],
-  secret_access_key: [System.get_env("AWS_SECRET_ACCESS_KEY"), :instance_role],
-  region: "sa-east-1"
-
 config :rpc,
   http_client: HTTPoison,
   aws_client: ExAws,
-  use_aws: true,
-  bucket: "erik-b2w",
-  img_dir: "priv/static/images",
-  tmp_dir: "priv/tmp",
-  db_col: "image_list"
+  fs_client: File,
+  io_client: IO,
+  img_client: Mogrify,
+  img_dir: "priv/static",
+  tmp_dir: "priv/tmp"
 
 config :rpc, :db,
-  name: "rpc_dev"
+  name: :mongo,
+  database: "rpc_dev",
+  pool: DBConnection.Poolboy
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

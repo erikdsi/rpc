@@ -5,6 +5,22 @@
 # is restricted to this project.
 use Mix.Config
 
+config :rpc,
+  static_dir: "priv/static",
+  tmp_dir: "priv/tmp",
+  bucket: "erik-bucket",
+  use_aws: true,
+  db_col: "image_list"
+
+config :rpc, :db,
+  name: :mongo,
+  pool: DBConnection.Poolboy
+#AWS
+config :ex_aws,
+  access_key_id: [System.get_env("AWS_ACCESS_KEY_ID"), :instance_role],
+  secret_access_key: [System.get_env("AWS_SECRET_ACCESS_KEY"), :instance_role],
+  region: "sa-east-1"
+
 # Configures the endpoint
 config :rpc, Rpc.Web.Endpoint,
   url: [host: "localhost"],
