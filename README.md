@@ -13,7 +13,7 @@ What you need installed:
 - [ImageMagick](http://www.imagemagick.org/script/index.php)
 - [MongoDB](https://www.mongodb.com/) version 3.4.4
 
-Then clone the repo, enter the direcory and get the dependencies
+Then clone the repo, enter the directory and get the dependencies:
 ```bash
 $ git clone https://github.com/erikdsi/rpc
 $ cd rpc
@@ -27,8 +27,11 @@ Config files are at `/config`
 ### MongoDB
 
 You can find Mongos's config under `:rpc, :db`.
+
 You can configure database names for dev and test environment at `config/dev.exs` and `config/test.exs`
+
 If Mongo is running on localhost no extra configuration is needed.
+
 If additional configuration is needed you have to add it to `config/config.exs`, most likely to be needed are:
 ```elixir
   :hostname - Server hostname
