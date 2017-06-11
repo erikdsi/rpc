@@ -42,8 +42,7 @@ defmodule Rpc.Tasks.Image do
     content = @fs.open!("#{@static}/#{path}") |> @io.binread(:all)
     url = "https://s3-#{@region}.amazonaws.com/#{@bucket}/#{path}"
     req = @aws.S3.put_object(@bucket, path, content, content_type: Helpers.mime_type(path), acl: :public_read)
-    #FIXME check actual return from aws request and remove _
-    with {:ok, _} <- @aws.request(req) do
+    with {:ok, %{status_code: 200}} <- @aws.request(req) do
       url
     else
       error -> Logger.debug(inspect(error))

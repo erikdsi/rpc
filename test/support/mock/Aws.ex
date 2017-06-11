@@ -6,6 +6,6 @@ defmodule Rpc.Mock.Aws do
     end
   end
   def request(_) do
-    {:ok, :nope}
+    {:ok, %{status_code: 200}}
   end
 end
