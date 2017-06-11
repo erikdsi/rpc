@@ -1,5 +1,0 @@
-todo:
-- write test for controller
-- add concache
-- write docs
-- recreate bucket without read permissions
